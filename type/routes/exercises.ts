@@ -4,15 +4,13 @@ import express from "express";
 
 const router = express.Router();
 
-router.get('/', async (req, res) =>{
+router.get('/', async (req, res, next) =>{
     try {
         const collection = await Exercises.getExercises().catch(console.error);
-        res.send(collection)
-    } catch (error) {
-        console.log(error)
-        res.send(error)
+        return res.send(collection)
+    } catch (err) {
+        return next(err);
     }
-    return
   })
 
   export default router
