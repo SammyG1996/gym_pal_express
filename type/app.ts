@@ -3,6 +3,7 @@
 
 import express, {Express, Request, Response, NextFunction} from "express";
 import cors from "cors"
+import { Exercises } from "./models/exercises";
 
 
 import { ExpressError, NotFoundError }from "./expressError";
@@ -23,8 +24,9 @@ app.use(express.json());
 
 // app.use("/auth", authRoutes); /** Route will be used to validate loggin  */
 
-app.get('/', (req, res) =>{
-  res.send('Hello From Express and Typescript!!!!!')
+app.get('/', async (req, res) =>{
+  const collection = await Exercises.getExercises().catch(console.error);
+  res.send(collection)
 })
 
 /** Handle 404 errors -- this matches everything */
