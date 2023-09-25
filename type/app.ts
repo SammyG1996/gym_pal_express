@@ -3,9 +3,6 @@
 
 import express, {Express, Request, Response, NextFunction} from "express";
 import cors from "cors"
-import { Exercises } from "./models/exercises";
-
-
 import { ExpressError, NotFoundError }from "./expressError";
 
 
@@ -25,9 +22,6 @@ app.use(express.json());
 
 app.use("/exercises", exercisesRoutes); /** Route will be used to validate loggin  */
 
-app.get('/', async (req, res) =>{
-  res.send(`<h1>WELCOME TO GYM PAL API</h1>`)
-})
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {

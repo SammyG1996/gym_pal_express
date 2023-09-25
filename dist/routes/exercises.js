@@ -15,10 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const exercises_1 = require("../models/exercises");
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
+/**
+ * This route will get all the exercises in the DB and return it
+ */
 router.get('/', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const collection = yield exercises_1.Exercises.getExercises().catch(console.error);
-        return res.send(collection);
+        return res.json(collection);
     }
     catch (err) {
         return next(err);
