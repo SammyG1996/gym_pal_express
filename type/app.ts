@@ -11,6 +11,7 @@ import { ExpressError, NotFoundError }from "./expressError";
 
 // const { authenticateJWT } = require("./middleware/auth");
 // const authRoutes = require("./routes/auth");
+import exercisesRoutes from "./routes/exercises"
 
 
 // import morgan from "morgan";
@@ -22,11 +23,10 @@ app.use(express.json());
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
 
-// app.use("/auth", authRoutes); /** Route will be used to validate loggin  */
+app.use("/exercises", exercisesRoutes); /** Route will be used to validate loggin  */
 
 app.get('/', async (req, res) =>{
-  const collection = await Exercises.getExercises().catch(console.error);
-  res.send(collection)
+  res.send(`<h1>WELCOME TO GYM PAL API</h1>`)
 })
 
 /** Handle 404 errors -- this matches everything */

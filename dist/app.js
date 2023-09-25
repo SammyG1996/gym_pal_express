@@ -14,20 +14,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const exercises_1 = require("./models/exercises");
 const expressError_1 = require("./expressError");
 // const { authenticateJWT } = require("./middleware/auth");
 // const authRoutes = require("./routes/auth");
+const exercises_1 = __importDefault(require("./routes/exercises"));
 // import morgan from "morgan";
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
-// app.use("/auth", authRoutes); /** Route will be used to validate loggin  */
+app.use("/exercises", exercises_1.default); /** Route will be used to validate loggin  */
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const collection = yield exercises_1.Exercises.getExercises().catch(console.error);
-    res.send(collection);
+    res.send(`<h1>WELCOME TO GYM PAL API</h1>`);
 }));
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
