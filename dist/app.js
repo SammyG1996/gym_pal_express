@@ -9,13 +9,15 @@ const expressError_1 = require("./expressError");
 // const { authenticateJWT } = require("./middleware/auth");
 // const authRoutes = require("./routes/auth");
 const exercises_1 = __importDefault(require("./routes/exercises"));
+const auth_1 = __importDefault(require("./routes/auth"));
 // import morgan from "morgan";
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
-app.use("/exercises", exercises_1.default); /** Route will be used to validate loggin  */
+app.use("/exercises", exercises_1.default); /** route is used to retreive exersices  */
+app.use("/auth", auth_1.default); /**   */
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
     return next(new expressError_1.NotFoundError());

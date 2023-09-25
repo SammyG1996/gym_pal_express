@@ -26,18 +26,3 @@ function createClient() {
     });
 }
 exports.createClient = createClient;
-// export async function getExercises() {
-//     const client = await createClient();
-//     try {      
-//         await client.connect();  
-//         const db = await client.db('Gym_Pal')
-//         const collection = await db.collection("Exercises").find({}).toArray()
-//         const data: Record<string, any> = collection[0];
-//         if(data["_id"]) delete data["_id"]
-//         return data
-//     } catch (e) {
-//         console.error(e);
-//     } finally {
-//         await client.close();
-//     }
-//  }

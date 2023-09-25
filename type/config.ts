@@ -18,7 +18,7 @@ export const PORT = process.env.PORT || 3001;
 // Speed up bcrypt during tests, since the algorithm safety isn't being tested
 //
 // WJB: Evaluate in 2021 if this should be increased to 13 for non-test use
-export const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 12;
+export const BCRYPT_WORK_FACTOR = process.env.BCRYPT_WORK_FACTOR ? process.env.BCRYPT_WORK_FACTOR : 1
 
 console.log("gym_pal Config:".green);
 console.log("SECRET_KEY:".yellow, SECRET_KEY);

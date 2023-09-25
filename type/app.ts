@@ -9,6 +9,7 @@ import { ExpressError, NotFoundError }from "./expressError";
 // const { authenticateJWT } = require("./middleware/auth");
 // const authRoutes = require("./routes/auth");
 import exercisesRoutes from "./routes/exercises"
+import authRoutes from "./routes/auth"
 
 
 // import morgan from "morgan";
@@ -20,7 +21,8 @@ app.use(express.json());
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
 
-app.use("/exercises", exercisesRoutes); /** Route will be used to validate loggin  */
+app.use("/exercises", exercisesRoutes); /** route is used to retreive exersices  */
+app.use("/auth", authRoutes); /**   */
 
 
 /** Handle 404 errors -- this matches everything */
