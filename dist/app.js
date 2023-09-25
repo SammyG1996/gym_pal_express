@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const expressError_1 = require("./expressError");
+const helmet_1 = __importDefault(require("helmet"));
+const express_mongo_sanitize_1 = __importDefault(require("express-mongo-sanitize"));
+const xssShield_1 = __importDefault(require("xss-shield/build/main/lib/xssShield"));
 // const { authenticateJWT } = require("./middleware/auth");
 // const authRoutes = require("./routes/auth");
 const exercises_1 = __importDefault(require("./routes/exercises"));
@@ -14,6 +17,9 @@ const auth_1 = __importDefault(require("./routes/auth"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+app.use((0, helmet_1.default)()); //secures HTTP HEADER
+app.use((0, express_mongo_sanitize_1.default)()); //secures JSON body from injection attacks
+app.use((0, xssShield_1.default)()); //secures the app from XSS attacks
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
 app.use("/exercises", exercises_1.default); /** route is used to retreive exersices  */

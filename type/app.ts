@@ -4,6 +4,10 @@
 import express, {Express, Request, Response, NextFunction} from "express";
 import cors from "cors"
 import { ExpressError, NotFoundError }from "./expressError";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
+import xssShield from "xss-shield/build/main/lib/xssShield";
+
 
 
 // const { authenticateJWT } = require("./middleware/auth");
@@ -18,6 +22,12 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(helmet()); //secures HTTP HEADER
+app.use(mongoSanitize()); //secures JSON body from injection attacks
+app.use(xssShield()) //secures the app from XSS attacks
+
+
+
 // app.use(morgan("tiny"));
 // app.use(authenticateJWT);
 
