@@ -5,7 +5,7 @@
  *  The error-handling middleware will return this.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ForbiddenError = exports.BadRequestError = exports.UnauthorizedError = exports.NotFoundError = exports.ExpressError = void 0;
+exports.AccountExistsError = exports.ForbiddenError = exports.BadRequestError = exports.UnauthorizedError = exports.NotFoundError = exports.ExpressError = void 0;
 class ExpressError extends Error {
     constructor(message, status) {
         super(message);
@@ -20,6 +20,13 @@ class NotFoundError extends ExpressError {
     }
 }
 exports.NotFoundError = NotFoundError;
+/** 404 NOT FOUND error. */
+class AccountExistsError extends ExpressError {
+    constructor(message = "Account Already Exists") {
+        super(message, 404);
+    }
+}
+exports.AccountExistsError = AccountExistsError;
 /** 401 UNAUTHORIZED error. */
 class UnauthorizedError extends ExpressError {
     constructor(message = "Unauthorized") {

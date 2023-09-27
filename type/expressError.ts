@@ -20,6 +20,14 @@ class NotFoundError extends ExpressError {
       super(message, 404);
     }
   }
+
+/** 404 NOT FOUND error. */
+
+class AccountExistsError extends ExpressError {
+  constructor(message = "Account Already Exists") {
+    super(message, 404);
+  }
+}
   
   /** 401 UNAUTHORIZED error. */
   
@@ -45,4 +53,4 @@ class NotFoundError extends ExpressError {
     }
   }
   
-export { ExpressError, NotFoundError, UnauthorizedError, BadRequestError, ForbiddenError };
+export { ExpressError, NotFoundError, UnauthorizedError, BadRequestError, ForbiddenError, AccountExistsError };
